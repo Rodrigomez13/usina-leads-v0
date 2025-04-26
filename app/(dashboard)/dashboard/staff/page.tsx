@@ -1,6 +1,7 @@
 "use client";
 
 import { TableFooter } from "@/components/ui/table";
+import React from "react";
 
 import { useState } from "react";
 import {
@@ -1151,8 +1152,8 @@ export default function StaffPage() {
                     </TableRow>
                   ) : (
                     filteredStaff.map((person) => (
-                      <>
-                        <TableRow key={person.id}>
+                      <React.Fragment key={person.id}>
+                        <TableRow>
                           <TableCell className="font-medium">
                             <div className="flex items-center">
                               <Button
@@ -1314,7 +1315,7 @@ export default function StaffPage() {
                             </TableCell>
                           </TableRow>
                         )}
-                      </>
+                      </React.Fragment>
                     ))
                   )}
                 </TableBody>

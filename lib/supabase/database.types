@@ -1,0 +1,374 @@
+export type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json | undefined }
+  | Json[]
+
+export interface Database {
+  public: {
+    Tables: {
+      ads: {
+        Row: {
+          active: boolean | null
+          adAccount: string | null
+          adSet: string | null
+          api: string | null
+          bm: string | null
+          budget: number | null
+          campaign: string | null
+          created_at: string | null
+          id: string
+          name: string | null
+          portfolio: string | null
+          server_id: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          active?: boolean | null
+          adAccount?: string | null
+          adSet?: string | null
+          api?: string | null
+          bm?: string | null
+          budget?: number | null
+          campaign?: string | null
+          created_at?: string | null
+          id: string
+          name?: string | null
+          portfolio?: string | null
+          server_id?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          active?: boolean | null
+          adAccount?: string | null
+          adSet?: string | null
+          api?: string | null
+          bm?: string | null
+          budget?: number | null
+          campaign?: string | null
+          created_at?: string | null
+          id?: string
+          name?: string | null
+          portfolio?: string | null
+          server_id?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      clients: {
+        Row: {
+          active: boolean | null
+          address: string | null
+          created_at: string | null
+          daily_goal: number | null
+          email: string | null
+          id: string
+          name: string | null
+          phone: string | null
+          server_id: string | null
+          status: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          active?: boolean | null
+          address?: string | null
+          created_at?: string | null
+          daily_goal?: number | null
+          email?: string | null
+          id: string
+          name?: string | null
+          phone?: string | null
+          server_id?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          active?: boolean | null
+          address?: string | null
+          created_at?: string | null
+          daily_goal?: number | null
+          email?: string | null
+          id?: string
+          name?: string | null
+          phone?: string | null
+          server_id?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      leads: {
+        Row: {
+          ad_id: string | null
+          client_id: string | null
+          created_at: string | null
+          data: Json | null
+          id: string
+          server_id: string | null
+          status: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          ad_id?: string | null
+          client_id?: string | null
+          created_at?: string | null
+          data?: Json | null
+          id: string
+          server_id?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          ad_id?: string | null
+          client_id?: string | null
+          created_at?: string | null
+          data?: Json | null
+          id?: string
+          server_id?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      reports: {
+        Row: {
+          created_at: string | null
+          created_by: string | null
+          format: string | null
+          id: string
+          name: string | null
+          parameters: Json | null
+          recipients: Json | null
+          schedule: string | null
+          status: string | null
+          type: string | null
+          updated_at: string | null
+          updated_by: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          created_by?: string | null
+          format?: string | null
+          id: string
+          name?: string | null
+          parameters?: Json | null
+          recipients?: Json | null
+          schedule?: string | null
+          status?: string | null
+          type?: string | null
+          updated_at?: string | null
+          updated_by?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          created_by?: string | null
+          format?: string | null
+          id?: string
+          name?: string | null
+          parameters?: Json | null
+          recipients?: Json | null
+          schedule?: string | null
+          status?: string | null
+          type?: string | null
+          updated_at?: string | null
+          updated_by?: string | null
+        }
+        Relationships: []
+      }
+      servers: {
+        Row: {
+          active: boolean | null
+          coefficient: number | null
+          created_at: string | null
+          description: string | null
+          id: string
+          ip_address: string | null
+          name: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          active?: boolean | null
+          coefficient?: number | null
+          created_at?: string | null
+          description?: string | null
+          id: string
+          ip_address?: string | null
+          name?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          active?: boolean | null
+          coefficient?: number | null
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          ip_address?: string | null
+          name?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      staff: {
+        Row: {
+          active: boolean | null
+          created_at: string | null
+          email: string | null
+          hourly_rate: number | null
+          id: string
+          name: string | null
+          overtime_rate: number | null
+          phone: string | null
+          rest_day: string | null
+          role: string | null
+          salary: number | null
+          shift: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          active?: boolean | null
+          created_at?: string | null
+          email?: string | null
+          hourly_rate?: number | null
+          id: string
+          name?: string | null
+          overtime_rate?: number | null
+          phone?: string | null
+          rest_day?: string | null
+          role?: string | null
+          salary?: number | null
+          shift?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          active?: boolean | null
+          created_at?: string | null
+          email?: string | null
+          hourly_rate?: number | null
+          id?: string
+          name?: string | null
+          overtime_rate?: number | null
+          phone?: string | null
+          rest_day?: string | null
+          role?: string | null
+          salary?: number | null
+          shift?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      transactions: {
+        Row: {
+          amount: number | null
+          client: string | null
+          created_at: string | null
+          date: string | null
+          description: string | null
+          id: string
+          server_id: string | null
+          status: string | null
+          type: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          amount?: number | null
+          client?: string | null
+          created_at?: string | null
+          date?: string | null
+          description?: string | null
+          id: string
+          server_id?: string | null
+          status?: string | null
+          type?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          amount?: number | null
+          client?: string | null
+          created_at?: string | null
+          date?: string | null
+          description?: string | null
+          id?: string
+          server_id?: string | null
+          status?: string | null
+          type?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      users: {
+        Row: {
+          created_at: string | null
+          email: string | null
+          id: string
+          last_login: string | null
+          name: string | null
+          password_hash: string | null
+          role: string | null
+          status: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email?: string | null
+          id: string
+          last_login?: string | null
+          name?: string | null
+          password_hash?: string | null
+          role?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string | null
+          id?: string
+          last_login?: string | null
+          name?: string | null
+          password_hash?: string | null
+          role?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+    }
+    Views: {
+      client_performance: {
+        Row: {
+          client_id: string | null
+          client_name: string | null
+          conversions: number | null
+          expense: number | null
+          leads: number | null
+          roi: number | null
+        }
+        Relationships: []
+      }
+      server_performance: {
+        Row: {
+          conversions: number | null
+          expense: number | null
+          leads: number | null
+          roi: number | null
+          server_id: string | null
+          server_name: string | null
+        }
+        Relationships: []
+      }
+    }
+    Functions: {
+      get_dashboard_stats: {
+        Args: { days_param: number }
+        Returns: Record<string,unknown>
+      }
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
+  }
+}

@@ -1,7 +1,6 @@
 "use client";
 
 import type React from "react";
-
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -76,100 +75,97 @@ const navItems: NavItem[] = [
 
 export default function DashboardLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   const [isMounted, setIsMounted] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const { toast } = useToast();
 
   useEffect(() => {
     setIsMounted(true);
-  }, []);
-
-  // Verificar autenticación en el lado del cliente
-  useEffect(() => {
     if (!isAuthenticated()) {
       router.push("/sign-in");
     }
   }, [router]);
 
-  if (!isMounted) {
-    return null;
-  }
+  if (!isMounted) return null;
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
-        <Sheet>
-          <SheetTrigger asChild>
+    <div className="flex min-h-screen bg-[#011D1C]">
+      {/* Sidebar */}
+      <aside
+        className={cn(
+          "fixed z-40 h-full flex flex-col border-r border-border bg-[#002423] transition-all",
+          isCollapsed ? "w-20" : "w-64"
+        )}
+      >
+        {/* Logo + toggle button */}
+        <div className="flex items-center justify-between p-4">
+          <Link href="/dashboard" className="flex items-center justify-center">
+            <img src="/logo.svg" alt="Logo" className="h-10 w-auto" />
+          </Link>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsCollapsed(!isCollapsed)}
+          >
+            {isCollapsed ? (
+              <Menu className="h-5 w-5" />
+            ) : (
+              <X className="h-5 w-5" />
+            )}
+          </Button>
+        </div>
+
+        {/* Navigation */}
+        <nav className="flex-1 overflow-y-auto p-2 space-y-2">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={cn(
+                "flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent",
+                pathname === item.href
+                  ? "bg-accent text-accent-foreground"
+                  : "text-muted-foreground",
+                isCollapsed ? "justify-center" : "gap-3"
+              )}
+            >
+              {item.icon}
+              {!isCollapsed && <span>{item.title}</span>}
+            </Link>
+          ))}
+        </nav>
+      </aside>
+
+      {/* Main content */}
+      <div
+        className={cn(
+          "flex flex-col flex-1 min-h-screen",
+          isCollapsed ? "ml-20" : "ml-64"
+        )}
+      >
+        <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-border bg-[#002423] px-4">
+          <div className="flex items-center gap-2">
             <Button variant="outline" size="icon" className="md:hidden">
               <Menu className="h-5 w-5" />
-              <span className="sr-only">Toggle menu</span>
             </Button>
-          </SheetTrigger>
-          <SheetContent side="left" className="w-72">
-            <div className="flex items-center gap-2 pb-4 pt-2">
-              <Link href="/dashboard" className="flex items-center gap-2">
-                <img src="/logo.svg" alt="Usina Leads" className="h-8 w-auto" />
-                <span className="text-lg font-semibold">Usina Leads</span>
-              </Link>
-              <X className="ml-auto h-5 w-5" />
-            </div>
-            <nav className="grid gap-2 text-lg font-medium">
-              {navItems.map((item, index) => (
-                <Link
-                  key={index}
-                  href={item.href}
-                  className={cn(
-                    "flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-accent hover:text-accent-foreground",
-                    pathname === item.href
-                      ? "bg-accent text-accent-foreground"
-                      : "text-muted-foreground"
-                  )}
-                >
-                  {item.icon}
-                  {item.title}
-                </Link>
-              ))}
-            </nav>
-          </SheetContent>
-        </Sheet>
-        <Link href="/dashboard" className="hidden items-center gap-2 md:flex">
-          <img src="/logo.svg" alt="Usina Leads" className="h-8 w-auto" />
-          <span className="text-lg font-semibold">Usina Leads</span>
-        </Link>
-        <div className="ml-auto flex items-center gap-4">
-          <Button variant="outline" size="icon" className="relative">
-            <Bell className="h-5 w-5" />
-            <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-[#148f77]" />
-            <span className="sr-only">Notifications</span>
-          </Button>
-          <UserNav />
-        </div>
-      </header>
-      <div className="flex flex-1">
-        <aside className="hidden w-64 border-r bg-background md:block">
-          <nav className="grid gap-2 p-4 text-sm">
-            {navItems.map((item, index) => (
-              <Link
-                key={index}
-                href={item.href}
-                className={cn(
-                  "flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-accent hover:text-accent-foreground",
-                  pathname === item.href
-                    ? "bg-accent text-accent-foreground"
-                    : "text-muted-foreground"
-                )}
-              >
-                {item.icon}
-                {item.title}
-              </Link>
-            ))}
-          </nav>
-        </aside>
-        <main className="flex-1 overflow-auto p-4 md:p-6">{children}</main>
+            <span className="text-lg font-semibold hidden md:inline">
+              Usina Leads
+            </span>
+          </div>
+          <div className="flex items-center gap-4">
+            <Button variant="outline" size="icon" className="relative">
+              <Bell className="h-5 w-5" />
+              <span className="absolute right-1 top-1 h-2 w-2 rounded-full bg-[#148f77]" />
+            </Button>
+            <UserNav />
+          </div>
+        </header>
+
+        <main className="flex-1 overflow-y-auto p-6">{children}</main>
       </div>
     </div>
   );

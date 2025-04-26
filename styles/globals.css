@@ -49,38 +49,33 @@ body {
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
+    --background: 179 100% 9%;
+    --foreground: 148 40% 80%;
+    --card: 179 100% 9%;
+    --card-foreground: 148 40% 80%;
+    --popover: 179 100% 9%;
+    --popover-foreground: 148 40% 80%;
+    --primary: 179 80% 53%;
+    --primary-foreground: 148 40% 80%;
+    --secondary: 176 76% 18%;
+    --secondary-foreground: 148 40% 80%;
+    --muted: 176 76% 18%;
+    --muted-foreground: 148 20.2% 65.1%;
+    --accent: 176 76% 18%;
+    --accent-foreground: 148 40% 80%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
+    --destructive-foreground: 148 40% 80%;
+    --border: 176 76% 18%;
+    --input: 176 76% 18%;
+    --ring: 179 80% 53%;
+
+    /* Sidebar color */
+    --sidebar: 179 100% 7%;
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -91,4 +86,52 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Estilos para transiciones suaves */
+.sidebar-transition {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Color de fondo para el sidebar */
+.bg-sidebar {
+  background-color: hsl(var(--sidebar));
+}
+
+/* Animaciones mejoradas */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-in-out;
+}
+
+/* Transiciones para hover */
+.hover-transition {
+  transition: all 0.2s ease-in-out;
+}
+
+.hover-transition:hover {
+  transform: translateY(-1px);
 }

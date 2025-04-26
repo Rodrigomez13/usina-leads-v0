@@ -4,32 +4,41 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 179 100% 9%;
-    --card: 0 0% 100%;
-    --card-foreground: 179 100% 9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 179 100% 9%;
-    --primary: 179 80% 53%;
-    --primary-foreground: 148 40% 80%;
-    --secondary: 148 40% 96.1%;
-    --secondary-foreground: 179 47.4% 11.2%;
-    --muted: 148 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 148 40% 96.1%;
-    --accent-foreground: 179 47.4% 11.2%;
+    --background: 180 100% 7%;
+    --foreground: 0 0% 100%;
+
+    --card: 179 91% 9%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 180 100% 5%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 168 74% 32%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 180 100% 10%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 180 100% 10%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 180 100% 10%;
+    --accent-foreground: 0 0% 100%;
+
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 148 40% 80%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 179 80% 53%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 180 100% 10%;
+    --input: 180 100% 10%;
+    --ring: 168 74% 32%;
+
     --radius: 0.5rem;
   }
 
   .dark {
     --background: 179 100% 9%;
     --foreground: 148 40% 80%;
-    --card: 179 100% 9%;
+    --card: 179 91% 9%;
     --card-foreground: 148 40% 80%;
     --popover: 179 100% 9%;
     --popover-foreground: 148 40% 80%;
@@ -46,6 +55,9 @@
     --border: 176 76% 18%;
     --input: 176 76% 18%;
     --ring: 179 80% 53%;
+
+    /* Sidebar color */
+    --sidebar: 179 100% 7%;
   }
 }
 
@@ -56,4 +68,88 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Estilos para transiciones suaves */
+.sidebar-transition {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Color de fondo para el sidebar */
+.bg-sidebar {
+  background-color: hsl(var(--sidebar));
+}
+
+/* Animaciones mejoradas */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-in-out;
+}
+
+/* Transiciones para hover */
+.hover-transition {
+  transition: all 0.2s ease-in-out;
+}
+
+.hover-transition:hover {
+  transform: translateY(-1px);
+}
+
+/* Estilos personalizados para el tema oscuro de Usina */
+.bg-usina-dark {
+  background-color: #022a29;
+}
+
+.bg-usina-darker {
+  background-color: #011d1c;
+}
+
+.border-usina {
+  border-color: #003633;
+}
+
+.text-usina-primary {
+  color: #148f77;
+}
+
+/* Estilos para las barras de desplazamiento */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #011d1c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #003633;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #148f77;
 }
