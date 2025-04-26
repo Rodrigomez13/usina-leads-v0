@@ -154,41 +154,41 @@ interface Ad {
 const initialStaff: StaffMember[] = [
   {
     id: "1",
-    name: "Juan Pérez",
+    name: "Emanuel Scarsi",
     role: "Encargado de Turno",
-    shift: "Mañana",
+    shift: "Noche",
     restDay: "Domingo",
-    salary: 180000,
+    salary: 200000,
     hourlyRate: 750,
     overtimeRate: 1125,
-    email: "juan@usina.com",
-    phone: "+54 9 11 1234-5678",
+    email: "emanuelscarsigragnolati@gmail.com",
+    phone: "+54 9 11 3343-7837",
     active: true,
     bankInfo: {
-      cbu: "0000000000000000000000",
-      alias: "juan.perez.mp",
-      holder: "Juan Pérez",
+      cbu: "0000003100017402453132",
+      alias: "emanuelscarsigragnolati.mp",
+      holder: "Emanuel Scarsi",
     },
   },
   {
     id: "2",
-    name: "María López",
+    name: "Lisandro Velazquez",
     role: "Operario",
-    shift: "Tarde",
+    shift: "Noche",
     restDay: "Sábado",
-    salary: 150000,
+    salary: 100000,
     hourlyRate: 625,
     overtimeRate: 937.5,
-    email: "maria@usina.com",
+    email: "martin.vlqz11@gmail.com",
     phone: "+54 9 11 2345-6789",
     active: true,
     bankInfo: {
-      cbu: "1111111111111111111111",
-      alias: "maria.lopez.mp",
-      holder: "María López",
+      cbu: "0000003100002309287148",
+      alias: "lisandro.vlqz",
+      holder: "Lisandro Velazquez",
       crypto: {
         type: "Binance",
-        address: "maria_binance@gmail.com",
+        address: "-----------",
       },
     },
   },
@@ -198,54 +198,54 @@ const initialStaff: StaffMember[] = [
 const initialAttendance: Attendance[] = [
   {
     id: "1",
-    date: "2023-04-22",
+    date: "2025-04-22",
     staffId: "1",
-    staffName: "Juan Pérez",
+    staffName: "Emanuel Scarsi",
     hoursWorked: 8,
     overtime: 0,
     restDayWorked: false,
   },
   {
     id: "2",
-    date: "2023-04-22",
+    date: "2025-04-22",
     staffId: "2",
-    staffName: "María López",
+    staffName: "Lisandro Velazquez",
     hoursWorked: 8,
     overtime: 1,
     restDayWorked: false,
   },
   {
     id: "3",
-    date: "2023-04-23",
+    date: "2025-04-23",
     staffId: "1",
-    staffName: "Juan Pérez",
+    staffName: "Emanuel Scarsi",
     hoursWorked: 8,
     overtime: 2,
     restDayWorked: false,
   },
   {
     id: "4",
-    date: "2023-04-23",
+    date: "2025-04-23",
     staffId: "2",
-    staffName: "María López",
+    staffName: "Lisandro Velazquez",
     hoursWorked: 8,
     overtime: 0,
     restDayWorked: false,
   },
   {
     id: "5",
-    date: "2023-04-24",
+    date: "2025-04-24",
     staffId: "1",
-    staffName: "Juan Pérez",
+    staffName: "Emanuel Scarsi",
     hoursWorked: 8,
     overtime: 0,
     restDayWorked: false,
   },
   {
     id: "6",
-    date: "2023-04-24",
+    date: "2025-04-24",
     staffId: "2",
-    staffName: "María López",
+    staffName: "Lisandro Velazquez",
     hoursWorked: 8,
     overtime: 1,
     restDayWorked: false,
@@ -257,8 +257,8 @@ const initialPayments: Payment[] = [
   {
     id: "1",
     staffId: "1",
-    staffName: "Juan Pérez",
-    date: "2023-04-15",
+    staffName: "Emanuel Scarsi",
+    date: "2025-04-15",
     amount: 90000,
     type: "salary",
     description: "Pago quincenal",
@@ -266,8 +266,8 @@ const initialPayments: Payment[] = [
   {
     id: "2",
     staffId: "2",
-    staffName: "María López",
-    date: "2023-04-15",
+    staffName: "Lisandro Velazquez",
+    date: "2025-04-15",
     amount: 75000,
     type: "salary",
     description: "Pago quincenal",
@@ -2150,7 +2150,7 @@ export default function StaffPage() {
                 onChange={(e) =>
                   setNewStaff({ ...newStaff, name: e.target.value })
                 }
-                placeholder="Juan Pérez"
+                placeholder="Emanuel Scarsi"
               />
             </div>
             <div className="space-y-2">
@@ -2234,7 +2234,7 @@ export default function StaffPage() {
                 onChange={(e) =>
                   setNewStaff({ ...newStaff, email: e.target.value })
                 }
-                placeholder="juan@usina.com"
+                placeholder="emanuelscarsigragnolati@gmail.com"
               />
             </div>
             <div className="space-y-2">
@@ -2290,7 +2290,7 @@ export default function StaffPage() {
                       },
                     })
                   }
-                  placeholder="juan.perez.mp"
+                  placeholder="emanuelscarsigragnolati.mp"
                 />
               </div>
               <div className="space-y-2">
@@ -2307,7 +2307,7 @@ export default function StaffPage() {
                       },
                     })
                   }
-                  placeholder="Juan Pérez"
+                  placeholder="Emanuel Scarsi"
                 />
               </div>
             </div>
